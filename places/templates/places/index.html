@@ -9,9 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	
 	
-    {{user.get_short_name}}
+    <h1>{{user.get_short_name}} <img src="{{user.profile.avatar}}"> </h1>  
 	
-    <title>places</title>
+    <title>home page</title>
 	
 	</head>
 	<body>
@@ -22,9 +22,14 @@
 			<li>{{ place.name_text }}</li>	
 			{% endfor %}
 			</ul>
+		<a href="{% url 'places:get_new_place'%}" class="btn btn-primary btn-lg"> Создать новое воспоминание </a>
 		{% else %}
 			<h1>У вас нет ни одного воспоминания!</h1>
+			<a href="{% url 'places:map'%}" class="btn btn-primary btn-lg"> го на карту </a>
+			<a href="{% url 'places:get_new_place'%}" class="btn btn-primary btn-lg"> Создать воспоминание </a>
 		{% endif %}
+		
+		<a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
 
 	</body>
 </html>

@@ -8,16 +8,17 @@
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-		<title>authorization</title>
+		<title>places</title>
 	</head>
 	<body>
+    
+		<h1>Название места</h1>
+		{{place.name_text}}
 		
-
-		<h1>Authorization!</h1>
-		<a class="btn btn-primary" href="{% url 'social:begin' 'vk-oauth2' %}"> Войти с помощью VK </a>
-		<!--<a class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}">Войти с помощью FB</a>-->
+		<h1>Комментарий</h1>
+		{{place.comment_text}}
+			
+		<a href="{% url 'places:index'%}" class="btn btn-primary btn-lg"> Вернуться к списку мест </a>
 		
-	  
-
 	</body>
 </html>

@@ -8,16 +8,16 @@
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-		<title>authorization</title>
+		<title>create new place</title>
 	</head>
 	<body>
 		
-
-		<h1>Authorization!</h1>
-		<a class="btn btn-primary" href="{% url 'social:begin' 'vk-oauth2' %}"> Войти с помощью VK </a>
-		<!--<a class="btn btn-primary" href="{% url 'social:begin' 'facebook' %}">Войти с помощью FB</a>-->
+		<form action="{% url 'places:get_new_place' %}" method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="Сохранить">
+		</form>
 		
-	  
 
 	</body>
 </html>

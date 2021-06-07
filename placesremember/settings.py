@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'places.apps.PlacesConfig',
 ]
 
+#STATIC_URL = '/static/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -119,18 +121,37 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
 )
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7872350'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'udXADjwMR8Wa0WlgEijK'
 
-LOGIN_URL = 'login/vk-oauth2/'
+
+
+#LOGIN_URL = 'login/vk-oauth2/'
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/places'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
+SOCIAL_AUTH_FACEBOOK_KEY = '986555235217788'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ed2e2f5a8d6101d5b26c905732764817'
+#SOCIAL_AUTH_FACEBOOK_SCOPE = ['photo']
+
+#SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'places.pipeline.get_avatar',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
